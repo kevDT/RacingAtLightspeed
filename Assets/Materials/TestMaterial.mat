@@ -21,6 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
+    - Boolean_DC2A93E3: 1
     - Vector1_4CEAD4AB: 0.08
     - Vector1_CE3A2F24: 0
     - Vector1_E395FDB5: 0
@@ -34,5 +35,5 @@ Material:
     - Vector4_1C19285A: {r: 0, g: 0, b: 0, a: 0.9}
     - Vector4_6853DDEA: {r: 0, g: 0, b: 0, a: -10.69}
     - Vector4_C8814FBF: {r: 0, g: 0, b: 0, a: 3.41}
-    - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _PlayerVelocity: {r: 0, g: 0, b: 0, a: 0}
+    - _PlayerPosition: {r: 0, g: -1149.6162, b: 87.45264, a: 0}
+    - _PlayerVelocity: {r: 0.000100000005, g: 0.000100000005, b: 0, a: 0}

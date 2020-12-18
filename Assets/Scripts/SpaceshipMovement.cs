@@ -6,9 +6,9 @@ public class SpaceshipMovement : MonoBehaviour
 {
     private Vector3 _playerVelocity = Vector3.zero;
 
-    private float _velocityAddition = 0.5f;
+    private float _velocityAddition = 1.5f;
 
-    private const float MAX_SPEED = 10;
+    private const float MAX_SPEED = 4.0f;
 
     private bool _moveForward = false;
     private bool _moveRight = false;
@@ -46,10 +46,12 @@ public class SpaceshipMovement : MonoBehaviour
         {
             _playerVelocity.z += _velocityAddition * Time.deltaTime;
             _playerVelocity.z = Mathf.Min(_playerVelocity.z, MAX_SPEED);
+            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
             yield return null;
         }
 
         _playerVelocity.z = 0;
+        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
 
 
@@ -68,10 +70,12 @@ public class SpaceshipMovement : MonoBehaviour
         {
             _playerVelocity.y += _velocityAddition * Time.deltaTime;
             _playerVelocity.y = Mathf.Min(_playerVelocity.y, MAX_SPEED);
+            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
             yield return null;
         }
 
         _playerVelocity.y = 0;
+        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
 
     public void OnMoveDown()
@@ -89,10 +93,12 @@ public class SpaceshipMovement : MonoBehaviour
         {
             _playerVelocity.y -= _velocityAddition * Time.deltaTime;
             _playerVelocity.y = Mathf.Max(_playerVelocity.y, -MAX_SPEED);
+            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
             yield return null;
         }
 
         _playerVelocity.y = 0;
+        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
 
     public void OnMoveLeft()
@@ -110,10 +116,12 @@ public class SpaceshipMovement : MonoBehaviour
         {
             _playerVelocity.x -= _velocityAddition * Time.deltaTime;
             _playerVelocity.x = Mathf.Max(_playerVelocity.x, -MAX_SPEED);
+            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
             yield return null;
         }
 
         _playerVelocity.x = 0;
+        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
 
     public void OnMoveRight() 
@@ -131,9 +139,11 @@ public class SpaceshipMovement : MonoBehaviour
         {
             _playerVelocity.x += _velocityAddition * Time.deltaTime;
             _playerVelocity.x = Mathf.Min(_playerVelocity.x, MAX_SPEED);
+            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
             yield return null;
         }
 
         _playerVelocity.x = 0;
+        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
 }
