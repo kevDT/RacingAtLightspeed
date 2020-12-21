@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.13296545, g: 0.19145328, b: 0.33962262, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 99e054de6274bf546ab84c50aa8ca1dc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.63806117, g: 0.2387799, b: 0.38677734, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-    m_MixedBakeMode: 1
+    m_MixedBakeMode: 0
     m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
@@ -431,6 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _relativityMaterials:
   - {fileID: 2100000, guid: 2560ee57bbaa56c45b21a2f6d21f9369, type: 2}
+  - {fileID: 2100000, guid: 99e054de6274bf546ab84c50aa8ca1dc, type: 2}
 --- !u!4 &222244877
 Transform:
   m_ObjectHideFlags: 0
@@ -1390,6 +1391,10 @@ PrefabInstance:
       propertyPath: field of view
       value: 80.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1687258584, guid: 85340b4041402da428da95ff3058a8e6, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1687258586, guid: 85340b4041402da428da95ff3058a8e6, type: 3}
       propertyPath: m_Antialiasing
       value: 0
@@ -1401,6 +1406,10 @@ PrefabInstance:
     - target: {fileID: 1687258586, guid: 85340b4041402da428da95ff3058a8e6, type: 3}
       propertyPath: m_RendererIndex
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687258586, guid: 85340b4041402da428da95ff3058a8e6, type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8019845021996273593, guid: 85340b4041402da428da95ff3058a8e6,
         type: 3}
