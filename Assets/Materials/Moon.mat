@@ -39,6 +39,7 @@ Material:
     - Vector4_1C19285A: {r: 0, g: 0, b: 0, a: 0.9}
     - Vector4_6853DDEA: {r: 0, g: 0, b: 0, a: -10.69}
     - Vector4_C8814FBF: {r: 0, g: 0, b: 0, a: 3.41}
+    - _ObjectVelocity: {r: 0, g: 0, b: 0, a: 0}
     - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
     - _PlayerVelocity: {r: 0.001, g: 0.001, b: 0, a: 0}
   m_BuildTextureStacks: []

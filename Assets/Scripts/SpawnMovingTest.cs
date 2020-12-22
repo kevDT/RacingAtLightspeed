@@ -1,0 +1,42 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnMovingTest : MonoBehaviour
+{
+    [SerializeField] GameObject _template = null;
+
+    private bool _alive = true;
+
+    private List<GameObject> _spawnedObjects = new List<GameObject>();
+
+    private void Start()
+    {
+        StartCoroutine(SpawnObjects());
+    }
+
+    private void Update()
+    {
+        Vector3 velocity = new Vector3(0, 3, 0);
+
+        for (int i = 0; i < _spawnedObjects.Count; i++)
+        {
+            _spawnedObjects[i].transform.Translate(velocity * Time.deltaTime);
+            _spawnedObjects[i].GetComponentInChildren<Renderer>().material.SetVector("_ObjectVelocity", velocity / 20.0f);
+        }
+    }
+
+    private IEnumerator SpawnObjects()
+    {
+        float timeBetweenObjects = 3.0f;
+
+        while (_alive)
+        {
+            yield return new WaitForSeconds(timeBetweenObjects);
+
+            _spawnedObjects.Add(Instantiate(_template, transform.position, Quaternion.identity));
+
+            yield return null;
+        }
+    }
+}
