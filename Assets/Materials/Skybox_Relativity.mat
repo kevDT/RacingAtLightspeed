@@ -24,5 +24,6 @@ Material:
     - Boolean_DC2A93E3: 1
     m_Colors:
     - Vector3_5549F7E4: {r: 0, g: 0, b: 0, a: 0}
-    - _PlayerPosition: {r: 0, g: 0, b: 256.73096, a: 0}
-    - _PlayerVelocity: {r: 0.000100000005, g: 0.000100000005, b: 0, a: 0}
+    - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
+    - _PlayerVelocity: {r: 0.001, g: 0.001, b: 0, a: 0}
+  m_BuildTextureStacks: []

@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpaceshipMovement : MonoBehaviour
 {
+    private const float MAX_SPEED = 6.0f;
+
     private Vector3 _playerVelocity = Vector3.zero;
+    private float _velocityAddition = 2.0f;
+    private float _playabilityFactor = 100; //Relativistic effects will be showed 'quicker' because they think the ship moves at a higher speed
 
-    private float _velocityAddition = 1.5f;
+    private bool _reset = false;
 
-    private const float MAX_SPEED = 4.0f;
+    bool _forward, _up, _down, _left, _right = false;
 
-    private bool _moveForward = false;
-    private bool _moveRight = false;
-    private bool _moveLeft = false;
-    private bool _moveUp = false;
-    private bool _moveDown = false;
 
     public Vector3 PlayerVelocity
     {
@@ -26,124 +26,129 @@ public class SpaceshipMovement : MonoBehaviour
         get { return transform.position; }
     }
 
-    public void FixedUpdate()
+
+    private void Update()
     {
-        transform.Translate(_playerVelocity);
+        transform.Translate(_playerVelocity / _playabilityFactor);
+        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
+
+        if (!Input.anyKey && _reset)
+            StartCoroutine(ResetVelocity());
     }
+
 
     public void OnMoveForward()
     {
-        //Hold button press input system not cooperating, use coroutines alternatively/temporarily
-        _moveForward = !_moveForward;
+        _reset = _forward;
+        _forward = !_forward;
 
-        if (_moveForward)
+        if (_forward)
             StartCoroutine(MoveForward());
+
     }
 
     private IEnumerator MoveForward()
     {
-        while (_moveForward)
+        while (_forward)
         {
             _playerVelocity.z += _velocityAddition * Time.deltaTime;
-            _playerVelocity.z = Mathf.Min(_playerVelocity.z, MAX_SPEED);
-            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
+            _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
-
-        _playerVelocity.z = 0;
-        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
-
 
     public void OnMoveUp()
     {
-        //Hold button press input system not cooperating, use coroutines alternatively/temporarily
-        _moveUp = !_moveUp;
+        _reset = _up;
+        _up = !_up;
 
-        if (_moveUp)
+        if (_up)
             StartCoroutine(MoveUp());
+
     }
 
     private IEnumerator MoveUp()
     {
-        while (_moveUp)
+        while (_up)
         {
             _playerVelocity.y += _velocityAddition * Time.deltaTime;
-            _playerVelocity.y = Mathf.Min(_playerVelocity.y, MAX_SPEED);
-            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
+            _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
-
-        _playerVelocity.y = 0;
-        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
 
     public void OnMoveDown()
     {
-        //Hold button press input system not cooperating, use coroutines alternatively/temporarily
-        _moveDown = !_moveDown;
+        _reset = _down;
+        _down = !_down;
 
-        if (_moveDown)
+        if (_down)
             StartCoroutine(MoveDown());
     }
 
     private IEnumerator MoveDown()
     {
-        while (_moveDown)
+        while (_down)
         {
             _playerVelocity.y -= _velocityAddition * Time.deltaTime;
-            _playerVelocity.y = Mathf.Max(_playerVelocity.y, -MAX_SPEED);
-            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
+            _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
-
-        _playerVelocity.y = 0;
-        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
 
     public void OnMoveLeft()
     {
-        //Hold button press input system not cooperating, use coroutines alternatively/temporarily
-        _moveLeft = !_moveLeft;
+        _reset = _left;
+        _left = !_left;
 
-        if (_moveLeft)
+        if (_left)
             StartCoroutine(MoveLeft());
     }
 
     private IEnumerator MoveLeft()
     {
-        while (_moveLeft)
+        while (_left)
         {
             _playerVelocity.x -= _velocityAddition * Time.deltaTime;
-            _playerVelocity.x = Mathf.Max(_playerVelocity.x, -MAX_SPEED);
-            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
+            _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
-
-        _playerVelocity.x = 0;
-        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
     }
 
-    public void OnMoveRight() 
+    public void OnMoveRight()
     {
-        //Hold button press input system not cooperating, use coroutines alternatively/temporarily
-        _moveRight = !_moveRight;
+        _reset = _right;
+        _right = !_right;
 
-        if (_moveRight)
+        if (_right)
             StartCoroutine(MoveRight());
     }
 
     private IEnumerator MoveRight()
     {
-        while (_moveRight)
+        while (_right)
         {
             _playerVelocity.x += _velocityAddition * Time.deltaTime;
-            _playerVelocity.x = Mathf.Min(_playerVelocity.x, MAX_SPEED);
-            GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
+            _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
+            yield return null;
+        }
+    }
+
+    private IEnumerator ResetVelocity()
+    {
+        float vel = _playerVelocity.magnitude;
+        Vector3 originalVector = _playerVelocity;
+
+        float progress = _velocityAddition * Time.deltaTime;
+
+        while (!_playerVelocity.Equals(Vector3.zero) && _reset)
+        {
+            progress += _velocityAddition * Time.deltaTime;
+            progress = Mathf.Min(progress, 1);
+            _playerVelocity = Vector3.Lerp(originalVector, Vector3.zero, progress);
             yield return null;
         }
 
-        _playerVelocity.x = 0;
-        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
+        _reset = false;
     }
 }

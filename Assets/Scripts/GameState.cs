@@ -11,7 +11,7 @@ public sealed class GameState : MonoBehaviour
         get { return instance; }
     }
 
-    private const float LIGHTSPEED = 10.0f;
+    private const float LIGHTSPEED = 20.0f;
 
     [SerializeField] Material[] _relativityMaterials = null;
 
@@ -21,6 +21,7 @@ public sealed class GameState : MonoBehaviour
         {
             if (instance == null)
                 instance = this;
+
             else
                 Destroy(gameObject);
         }
@@ -36,6 +37,15 @@ public sealed class GameState : MonoBehaviour
         {
             material.SetVector("_PlayerVelocity", playerVel / LIGHTSPEED); //v/c
             material.SetVector("_PlayerPosition", playerPos);
+        }
+    }
+
+    public void OnApplicationQuit()
+    {
+        foreach (Material material in _relativityMaterials)
+        {
+            material.SetVector("_PlayerVelocity", new Vector3(0.001f, 0.001f, 0)); //v/c
+            material.SetVector("_PlayerPosition", Vector3.zero);
         }
     }
 }
