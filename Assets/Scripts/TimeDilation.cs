@@ -15,7 +15,9 @@ public class TimeDilation : MonoBehaviour
 
     private void Update()
     {
-        Vector3 relativeVel = _objectMovement.ObjectVelocity - GameState.Instance.PlayerVelocity;
+
+        Vector3 relativeVel = (_objectMovement.ObjectVelocity - GameState.Instance.PlayerVelocity)
+            / (1 - (Vector3.Scale(_objectMovement.ObjectVelocity, GameState.Instance.PlayerVelocity).magnitude / GameState.LIGHTSPEED_SPQUARED));
 
         _lifeTime -= Time.deltaTime * (Mathf.Sqrt(1 - (relativeVel.sqrMagnitude / GameState.LIGHTSPEED_SPQUARED)));
 

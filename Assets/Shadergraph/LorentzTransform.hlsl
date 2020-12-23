@@ -27,6 +27,9 @@ void CalculateNewPos_float(float3 offsettedPos, float relativeSpeed, float speed
 			ca = cos(a);
 			sa = sin(a);
 
+			//Rotate player velocity
+			//All equations are based of movement in one direction
+
 			float3 originalPos = offsettedPos;
 			offsettedPos.x = originalPos.x * (ca + ux * ux * (1 - ca)) + originalPos.y * (ux * uy * (1 - ca)) + originalPos.z * (uy * sa);
 			offsettedPos.y = originalPos.x * (uy * ux * (1 - ca)) + originalPos.y * (ca + uy * uy * (1 - ca)) - originalPos.z * (ux * sa);
@@ -37,6 +40,7 @@ void CalculateNewPos_float(float3 offsettedPos, float relativeSpeed, float speed
 		float spdOfLight = 200;
 		if (speed != 0)
 		{
+			//Rotate object velocity => similar to player velocity
 			rotateObjVel.x = (objectVel.x * (ca + ux * ux * (1 - ca)) + objectVel.y * (ux * uy * (1 - ca)) + objectVel.z * (uy * sa)) * spdOfLight;
 			rotateObjVel.y = (objectVel.x * (uy * ux * (1 - ca)) + objectVel.y * (ca + uy * uy * (1 - ca)) - objectVel.z * (ux * sa)) * spdOfLight;
 			rotateObjVel.z = (objectVel.x * (-uy * sa) + objectVel.y * (ux * sa) + objectVel.z * (ca)) * spdOfLight;
@@ -48,9 +52,9 @@ void CalculateNewPos_float(float3 offsettedPos, float relativeSpeed, float speed
 			rotateObjVel.y = (objectVel.y) * spdOfLight;
 		}
 
-		float c = -(offsettedPos.x * offsettedPos.x + offsettedPos.y * offsettedPos.y + offsettedPos.z * offsettedPos.z); //first get position squared (position doted with position)
+		float c = -(offsettedPos.x * offsettedPos.x + offsettedPos.y * offsettedPos.y + offsettedPos.z * offsettedPos.z); 
 
-		float b = -(2 * (offsettedPos.x * rotateObjVel.x + offsettedPos.y * rotateObjVel.y + offsettedPos.z * rotateObjVel.z)); //next get position doted with velocity, should be only in the Z direction
+		float b = -(2 * (offsettedPos.x * rotateObjVel.x + offsettedPos.y * rotateObjVel.y + offsettedPos.z * rotateObjVel.z));
 
 		float d = (spdOfLight * spdOfLight) - (rotateObjVel.x * rotateObjVel.x + rotateObjVel.y * rotateObjVel.y + rotateObjVel.z * rotateObjVel.z);
 
