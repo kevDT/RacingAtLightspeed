@@ -11,9 +11,16 @@ public sealed class GameState : MonoBehaviour
         get { return instance; }
     }
 
-    private const float LIGHTSPEED = 20.0f;
 
     [SerializeField] Material[] _relativityMaterials = null;
+
+    public static readonly float LIGHTSPEED = 20.0f;
+    public static readonly float LIGHTSPEED_SPQUARED = 400.0f;
+
+    private GameObject _player = null;
+    public Vector3 PlayerVelocity
+    { get { return _player.GetComponent<SpaceshipMovement>().PlayerVelocity; } }
+
 
     private void Awake()
     {
@@ -25,6 +32,11 @@ public sealed class GameState : MonoBehaviour
             else
                 Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void UpdatePlayerStatus(Vector3 playerPos, Vector3 playerVel)

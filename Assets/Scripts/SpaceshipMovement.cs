@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SpaceshipMovement : MonoBehaviour
 {
-    private const float MAX_SPEED = 6.0f;
+    private const float MAX_SPEED = 8.0f;
 
     private Vector3 _playerVelocity = Vector3.zero;
     private float _velocityAddition = 2.0f;

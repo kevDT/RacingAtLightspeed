@@ -15,17 +15,6 @@ public class SpawnMovingTest : MonoBehaviour
         StartCoroutine(SpawnObjects());
     }
 
-    private void Update()
-    {
-        Vector3 velocity = new Vector3(0, 3, 0);
-
-        for (int i = 0; i < _spawnedObjects.Count; i++)
-        {
-            _spawnedObjects[i].transform.Translate(velocity * Time.deltaTime);
-            _spawnedObjects[i].GetComponentInChildren<Renderer>().material.SetVector("_ObjectVelocity", velocity / 20.0f);
-        }
-    }
-
     private IEnumerator SpawnObjects()
     {
         float timeBetweenObjects = 3.0f;
