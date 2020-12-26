@@ -8,6 +8,8 @@ public class TimeDilation : MonoBehaviour
 
     private Movement _objectMovement = null;
 
+    float _testTimer = 0.0f;
+
     private void Awake()
     {
         _objectMovement = GetComponent<Movement>();
@@ -22,6 +24,11 @@ public class TimeDilation : MonoBehaviour
         _lifeTime -= Time.deltaTime * (Mathf.Sqrt(1 - (relativeVel.sqrMagnitude / GameState.LIGHTSPEED_SPQUARED)));
 
         if (_lifeTime <= 0)
+        {
+            Debug.Log(_testTimer);
             Destroy(gameObject);
+        }
+
+        _testTimer += Time.deltaTime;
     }
 }

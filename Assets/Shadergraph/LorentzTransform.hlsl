@@ -83,3 +83,4 @@ void CalculateNewPos_float(float3 offsettedPos, float relativeSpeed, float speed
 
 	finalPos = offsettedPos;
 }
+

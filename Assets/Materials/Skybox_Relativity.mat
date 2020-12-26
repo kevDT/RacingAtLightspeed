@@ -22,6 +22,10 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - Boolean_DC2A93E3: 1
+    - Vector1_638B5D5E: 700
+    - Vector1_9C5763B5: 380
+    - Vector1_A709CCF4: 400
+    - Vector1_CB75F153: 0
     m_Colors:
     - Vector3_5549F7E4: {r: 0, g: 0, b: 0, a: 0}
     - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}

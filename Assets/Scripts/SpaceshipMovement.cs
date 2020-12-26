@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class SpaceshipMovement : MonoBehaviour
 {
-    private const float MAX_SPEED = 8.0f;
+    private const float MAX_SPEED = 18.0f;
 
     private Vector3 _playerVelocity = Vector3.zero;
     private float _velocityAddition = 2.0f;
-    private float _playabilityFactor = 100; //Relativistic effects will be showed 'quicker' because they think the ship moves at a higher speed
+    private float _playabilityfactor = 300.0f;
 
     private bool _reset = false;
 
@@ -26,12 +26,11 @@ public class SpaceshipMovement : MonoBehaviour
         get { return transform.position; }
     }
 
-
     private void Update()
     {
-        transform.Translate(_playerVelocity / _playabilityFactor);
-        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
 
+        transform.Translate(_playerVelocity / _playabilityfactor);
+        GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
         if (!Input.anyKey && _reset)
             StartCoroutine(ResetVelocity());
     }
@@ -136,19 +135,19 @@ public class SpaceshipMovement : MonoBehaviour
 
     private IEnumerator ResetVelocity()
     {
-        float vel = _playerVelocity.magnitude;
-        Vector3 originalVector = _playerVelocity;
+        //float vel = _playerVelocity.magnitude;
+        //Vector3 originalVector = _playerVelocity;
 
-        float progress = _velocityAddition * Time.deltaTime;
+        //float progress = _velocityAddition * Time.deltaTime;
 
-        while (!_playerVelocity.Equals(Vector3.zero) && _reset)
-        {
-            progress += _velocityAddition * Time.deltaTime;
-            progress = Mathf.Min(progress, 1);
-            _playerVelocity = Vector3.Lerp(originalVector, Vector3.zero, progress);
-            yield return null;
-        }
+        //while (!_playerVelocity.Equals(Vector3.zero) && _reset)
+        //{
+        //    progress += _velocityAddition * Time.deltaTime;
+        //    progress = Mathf.Min(progress, 1);
+        //    _playerVelocity = Vector3.Lerp(originalVector, Vector3.zero, progress);
+        yield return null;
+        //}
 
-        _reset = false;
+        //_reset = false;
     }
 }

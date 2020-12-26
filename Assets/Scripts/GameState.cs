@@ -42,12 +42,12 @@ public sealed class GameState : MonoBehaviour
     public void UpdatePlayerStatus(Vector3 playerPos, Vector3 playerVel)
     {
         //Weird jittering occurs if only z-vel !=0
-        if ((playerVel.x < 0.001f && playerVel.x > -0.001f) && (playerVel.y < 0.001f && playerVel.y > -0.001f))
+        if (Mathf.Approximately(playerVel.x, 0.0f) && Mathf.Approximately(playerVel.y, 0.0f))
             playerVel.x = playerVel.y = 0.001f;
 
         foreach (Material material in _relativityMaterials)
         {
-            material.SetVector("_PlayerVelocity", playerVel / LIGHTSPEED); //v/c
+            material.SetVector("_PlayerVelocity", playerVel / LIGHTSPEED);
             material.SetVector("_PlayerPosition", playerPos);
         }
     }
