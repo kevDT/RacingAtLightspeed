@@ -9,7 +9,7 @@ public class SpaceshipMovement : MonoBehaviour
 
     private Vector3 _playerVelocity = Vector3.zero;
     private float _velocityAddition = 2.0f;
-    private float _playabilityfactor = 300.0f;
+    private float _playabilityfactor = 50.0f;
 
     private bool _reset = false;
 
@@ -135,19 +135,19 @@ public class SpaceshipMovement : MonoBehaviour
 
     private IEnumerator ResetVelocity()
     {
-        //float vel = _playerVelocity.magnitude;
-        //Vector3 originalVector = _playerVelocity;
+        float vel = _playerVelocity.magnitude;
+        Vector3 originalVector = _playerVelocity;
 
-        //float progress = _velocityAddition * Time.deltaTime;
+        float progress = _velocityAddition * Time.deltaTime;
 
-        //while (!_playerVelocity.Equals(Vector3.zero) && _reset)
-        //{
-        //    progress += _velocityAddition * Time.deltaTime;
-        //    progress = Mathf.Min(progress, 1);
-        //    _playerVelocity = Vector3.Lerp(originalVector, Vector3.zero, progress);
-        yield return null;
-        //}
+        while (!_playerVelocity.Equals(Vector3.zero) && _reset)
+        {
+            progress += _velocityAddition * Time.deltaTime;
+            progress = Mathf.Min(progress, 1);
+            _playerVelocity = Vector3.Lerp(originalVector, Vector3.zero, progress);
+            yield return null;
+        }
 
-        //_reset = false;
+        _reset = false;
     }
 }

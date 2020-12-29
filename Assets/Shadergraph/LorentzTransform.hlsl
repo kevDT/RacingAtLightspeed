@@ -37,7 +37,7 @@ void CalculateNewPos_float(float3 offsettedPos, float relativeSpeed, float speed
 		}
 
 		float3 rotateObjVel = float3(0, 0, 0);
-		float spdOfLight = 200;
+		float spdOfLight = 20;
 		if (speed != 0)
 		{
 			//Rotate object velocity => similar to player velocity

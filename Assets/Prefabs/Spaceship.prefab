@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
   - component: {fileID: 1303127512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 1638469495451204933}
   - component: {fileID: 1145277937}
   - component: {fileID: 1145277936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spaceship
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -174,8 +174,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 1.55, z: 4.17}
-  m_Center: {x: 0, y: 0.88, z: 0.31}
+  m_Size: {x: 2.17, y: 0.48, z: 1.82}
+  m_Center: {x: 0, y: 0.51, z: 0.16}
 --- !u!114 &1145277937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,17 +284,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c132eadbff9ec884eadd5d25f448bad5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c132eadbff9ec884eadd5d25f448bad5,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c132eadbff9ec884eadd5d25f448bad5,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c132eadbff9ec884eadd5d25f448bad5,
         type: 3}
@@ -305,6 +305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c132eadbff9ec884eadd5d25f448bad5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c132eadbff9ec884eadd5d25f448bad5, type: 3}

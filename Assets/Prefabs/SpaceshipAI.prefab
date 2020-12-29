@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8019845021996273593}
   - component: {fileID: 1638469495451204933}
+  - component: {fileID: 6220375821133128245}
   m_Layer: 0
   m_Name: SpaceshipAI
   m_TagString: Untagged
@@ -45,6 +46,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 1.55, z: 4.17}
   m_Center: {x: 0, y: 0.88, z: 0.31}
+--- !u!114 &6220375821133128245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8692557209841868496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdad884d82741fb4c8877544d83b84f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scaleCollisionBox: {x: 1, y: 1, z: 1}
+  _hitLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &3271071524441564118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,7 +128,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 441d6076d4fb8814b95aea6f4c856b58, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c132eadbff9ec884eadd5d25f448bad5,
         type: 3}
       propertyPath: m_Name

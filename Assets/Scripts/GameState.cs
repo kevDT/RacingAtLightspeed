@@ -12,14 +12,14 @@ public sealed class GameState : MonoBehaviour
     }
 
 
-    [SerializeField] Material[] _relativityMaterials = null;
-
     public static readonly float LIGHTSPEED = 20.0f;
-    public static readonly float LIGHTSPEED_SPQUARED = 400.0f;
+    public static readonly float LIGHTSPEED_SQUARED = 400.0f;
 
-    private GameObject _player = null;
+    private SpaceshipMovement _playerMovement = null;
     public Vector3 PlayerVelocity
-    { get { return _player.GetComponent<SpaceshipMovement>().PlayerVelocity; } }
+    { get { return _playerMovement.PlayerVelocity; } }
+    public Vector3 PlayerPosition
+    { get { return _playerMovement.PlayerPosition; } }
 
 
     private void Awake()
@@ -36,7 +36,7 @@ public sealed class GameState : MonoBehaviour
 
     private void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceshipMovement>();
     }
 
     public void UpdatePlayerStatus(Vector3 playerPos, Vector3 playerVel)
@@ -45,19 +45,13 @@ public sealed class GameState : MonoBehaviour
         if (Mathf.Approximately(playerVel.x, 0.0f) && Mathf.Approximately(playerVel.y, 0.0f))
             playerVel.x = playerVel.y = 0.001f;
 
-        foreach (Material material in _relativityMaterials)
-        {
-            material.SetVector("_PlayerVelocity", playerVel / LIGHTSPEED);
-            material.SetVector("_PlayerPosition", playerPos);
-        }
+        Shader.SetGlobalVector("_PlayerVelocity", playerVel / LIGHTSPEED);
+        Shader.SetGlobalVector("_PlayerPosition", playerPos);
     }
 
     public void OnApplicationQuit()
     {
-        foreach (Material material in _relativityMaterials)
-        {
-            material.SetVector("_PlayerVelocity", new Vector3(0.001f, 0.001f, 0)); //v/c
-            material.SetVector("_PlayerPosition", Vector3.zero);
-        }
+        Shader.SetGlobalVector("_PlayerVelocity", new Vector3(0.001f, 0.001f, 0));
+        Shader.SetGlobalVector("_PlayerPosition", Vector3.zero);
     }
 }

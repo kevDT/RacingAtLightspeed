@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnMovingTest : MonoBehaviour
+public class SpawnMovingObject : MonoBehaviour
 {
     [SerializeField] GameObject _template = null;
 

@@ -8,8 +8,6 @@ public class TimeDilation : MonoBehaviour
 
     private Movement _objectMovement = null;
 
-    float _testTimer = 0.0f;
-
     private void Awake()
     {
         _objectMovement = GetComponent<Movement>();
@@ -17,18 +15,20 @@ public class TimeDilation : MonoBehaviour
 
     private void Update()
     {
+        if (!_objectMovement)
+            return;
 
-        Vector3 relativeVel = (_objectMovement.ObjectVelocity - GameState.Instance.PlayerVelocity)
-            / (1 - (Vector3.Scale(_objectMovement.ObjectVelocity, GameState.Instance.PlayerVelocity).magnitude / GameState.LIGHTSPEED_SPQUARED));
+        Vector3 playerVelocity = GameState.Instance.PlayerVelocity;
+        Vector3 objectVelocity = _objectMovement.ObjectVelocity;
 
-        _lifeTime -= Time.deltaTime * (Mathf.Sqrt(1 - (relativeVel.sqrMagnitude / GameState.LIGHTSPEED_SPQUARED)));
+        Vector3 leftTerm = objectVelocity - playerVelocity;
+        Vector3 rightTerm = Vector3.one - Vector3.Scale(objectVelocity, playerVelocity) / GameState.LIGHTSPEED_SQUARED;
+        Vector3 relativeVel = new Vector3(leftTerm.x / rightTerm.x, leftTerm.y / rightTerm.y, leftTerm.z / rightTerm.z);
+
+        _lifeTime -= Time.deltaTime * (Mathf.Sqrt(1 - (relativeVel.sqrMagnitude / GameState.LIGHTSPEED_SQUARED)));
 
         if (_lifeTime <= 0)
-        {
-            Debug.Log(_testTimer);
             Destroy(gameObject);
-        }
 
-        _testTimer += Time.deltaTime;
     }
 }
