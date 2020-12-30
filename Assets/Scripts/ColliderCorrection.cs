@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckCollision : MonoBehaviour
+[RequireComponent(typeof(BoxCollider))]
+public class ColliderCorrection : MonoBehaviour
 {
     private Movement _objectMovement = null;
-
-    [SerializeField] private Vector3 _scaleCollisionBox = Vector3.one;
-
-    private Vector3 debugPos = Vector3.zero;
 
     private void Start()
     {
@@ -17,16 +14,17 @@ public class CheckCollision : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 newPos = debugPos = CalculateOffsettedPos();
-        CheckOverlap(newPos);
+        Vector3 newPos = CalculateOffsettedPos();
+        CorrectCollider(newPos);
     }
 
-    [SerializeField] LayerMask _hitLayer = -1;
-    private void CheckOverlap(Vector3 pos)
+    private void CorrectCollider(Vector3 pos)
     {
-        Collider[] hitColliders = Physics.OverlapBox(pos, _scaleCollisionBox / 2, Quaternion.identity, _hitLayer);
-        if (hitColliders.Length > 0)
-            Destroy(gameObject);
+        
+        BoxCollider collider = GetComponent<BoxCollider>();
+        collider.center = Vector3.zero;
+        collider.gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+        collider.center = pos - transform.position;
     }
 
     private Vector3 CalculateOffsettedPos()
@@ -133,11 +131,5 @@ public class CheckCollision : MonoBehaviour
         offsettedPos += playerPos;
 
         return offsettedPos;
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(debugPos, _scaleCollisionBox);
     }
 }

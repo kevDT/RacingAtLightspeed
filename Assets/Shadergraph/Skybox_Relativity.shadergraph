@@ -4,13 +4,13 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.Vector3ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"14ae72f7-d765-4cd9-b8b5-f926a859a095\"\n    },\n    \"m_Name\": \"PlayerPosition\",\n    \"m_DefaultReferenceName\": \"Vector3_1DC913B7\",\n    \"m_OverrideReferenceName\": \"_PlayerPosition\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"x\": 0.0,\n        \"y\": 0.0,\n        \"z\": 0.0,\n        \"w\": 0.0\n    }\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"14ae72f7-d765-4cd9-b8b5-f926a859a095\"\n    },\n    \"m_Name\": \"PlayerPosition\",\n    \"m_DefaultReferenceName\": \"Vector3_1DC913B7\",\n    \"m_OverrideReferenceName\": \"_PlayerPosition\",\n    \"m_GeneratePropertyBlock\": false,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"x\": 0.0,\n        \"y\": 0.0,\n        \"z\": 0.0,\n        \"w\": 0.0\n    }\n}"
         },
         {
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.Vector3ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"3243f6fd-9dc5-4ed3-9b26-96160f851bb1\"\n    },\n    \"m_Name\": \"PlayerVelocity\",\n    \"m_DefaultReferenceName\": \"Vector3_144CF51B\",\n    \"m_OverrideReferenceName\": \"_PlayerVelocity\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"x\": 0.0,\n        \"y\": 0.0,\n        \"z\": 0.0,\n        \"w\": 0.0\n    }\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"3243f6fd-9dc5-4ed3-9b26-96160f851bb1\"\n    },\n    \"m_Name\": \"PlayerVelocity\",\n    \"m_DefaultReferenceName\": \"Vector3_144CF51B\",\n    \"m_OverrideReferenceName\": \"_PlayerVelocity\",\n    \"m_GeneratePropertyBlock\": false,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"x\": 0.0,\n        \"y\": 0.0,\n        \"z\": 0.0,\n        \"w\": 0.0\n    }\n}"
         },
         {
             "typeInfo": {
