@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4595128072729455155}
   - component: {fileID: 5059931836884163757}
   - component: {fileID: 3692512824325030002}
+  - component: {fileID: 813954975345650705}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &813954975345650705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554594496876422361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d285817705e1b44ac41c2d2dbd6f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scaleMin: {x: 240, y: 240, z: 240}
+  _scaleMax: {x: 500, y: 500, z: 500}
 --- !u!1 &3901472567919652543
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +107,7 @@ GameObject:
   - component: {fileID: 7785526757863086403}
   - component: {fileID: 6650155726771804028}
   - component: {fileID: 7556231249521994685}
+  - component: {fileID: 4452048335430751583}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -138,6 +154,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdad884d82741fb4c8877544d83b84f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4452048335430751583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901472567919652543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2cdc1bada6284048bea3aed3a35c5e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4820575527840968415
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +175,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4879118728595616361}
-  - component: {fileID: 8654907458143521455}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -171,17 +198,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8654907458143521455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4820575527840968415}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae31e307949837d4db1e7573e562f028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _template: {fileID: 267580192461810998, guid: 5d083c62209b3024895cdc0d7d895180,
-    type: 3}

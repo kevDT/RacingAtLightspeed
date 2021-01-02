@@ -60,6 +60,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ShootProjectile",
+                    "type": "Button",
+                    "id": "6c71b813-a6a4-4d15-ad6b-a2a8dcf36aa8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -137,6 +145,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RotationY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4fcd0f8-d620-4ed1-ace6-3d8c24efc4b0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootProjectile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

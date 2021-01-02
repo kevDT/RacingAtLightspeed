@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 public class SpaceshipMovement : MonoBehaviour
 {
-    private const float MAX_SPEED = 18.0f;
+    private const float MAX_SPEED = 15.0f;
+    private const float ACCEL_RATE = 2.0f;
 
     private Vector3 _playerVelocity = Vector3.zero;
-    private float _velocityAddition = 2.0f;
     private float _playabilityfactor = 50.0f;
 
     private bool _reset = false;
@@ -28,7 +28,6 @@ public class SpaceshipMovement : MonoBehaviour
 
     private void Update()
     {
-
         transform.Translate(_playerVelocity / _playabilityfactor);
         GameState.Instance.UpdatePlayerStatus(transform.position, _playerVelocity);
         if (!Input.anyKey && _reset)
@@ -50,7 +49,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_forward)
         {
-            _playerVelocity.z += _velocityAddition * Time.deltaTime;
+            _playerVelocity.z += ACCEL_RATE * Time.deltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -63,14 +62,13 @@ public class SpaceshipMovement : MonoBehaviour
 
         if (_up)
             StartCoroutine(MoveUp());
-
     }
 
     private IEnumerator MoveUp()
     {
         while (_up)
         {
-            _playerVelocity.y += _velocityAddition * Time.deltaTime;
+            _playerVelocity.y += ACCEL_RATE * Time.deltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -89,7 +87,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_down)
         {
-            _playerVelocity.y -= _velocityAddition * Time.deltaTime;
+            _playerVelocity.y -= ACCEL_RATE * Time.deltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -108,7 +106,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_left)
         {
-            _playerVelocity.x -= _velocityAddition * Time.deltaTime;
+            _playerVelocity.x -= ACCEL_RATE * Time.deltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -127,7 +125,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_right)
         {
-            _playerVelocity.x += _velocityAddition * Time.deltaTime;
+            _playerVelocity.x += ACCEL_RATE * Time.deltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -138,11 +136,11 @@ public class SpaceshipMovement : MonoBehaviour
         float vel = _playerVelocity.magnitude;
         Vector3 originalVector = _playerVelocity;
 
-        float progress = _velocityAddition * Time.deltaTime;
+        float progress = ACCEL_RATE * Time.deltaTime;
 
         while (!_playerVelocity.Equals(Vector3.zero) && _reset)
         {
-            progress += _velocityAddition * Time.deltaTime;
+            progress += ACCEL_RATE * Time.deltaTime;
             progress = Mathf.Min(progress, 1);
             _playerVelocity = Vector3.Lerp(originalVector, Vector3.zero, progress);
             yield return null;

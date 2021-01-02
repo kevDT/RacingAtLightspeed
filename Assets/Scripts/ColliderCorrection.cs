@@ -9,7 +9,7 @@ public class ColliderCorrection : MonoBehaviour
 
     private void Start()
     {
-        _objectMovement = GetComponent<Movement>();
+        _objectMovement = transform.root.GetComponent<Movement>();
     }
 
     private void FixedUpdate()
@@ -40,14 +40,14 @@ public class ColliderCorrection : MonoBehaviour
         if (_objectMovement)
             objectVelocity = _objectMovement.ObjectVelocity / GameState.LIGHTSPEED;
 
-        bool relativeVelNotZero = objectVelocity == playerVelocity; //Here, speed is not relevant, nor is the direction
+        bool relativeVelZero = objectVelocity == playerVelocity; //Here, speed is not relevant, nor is the direction
 
         float speed = playerVelocity.magnitude;
 
         bool zeroSpeed = Mathf.Approximately(speed, 0);
 
         //Apply Lorentz Transform
-        if (!relativeVelNotZero)
+        if (!relativeVelZero)
         {
             float a = 0;
             float ux = 0;
