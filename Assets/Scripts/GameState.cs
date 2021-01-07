@@ -15,7 +15,8 @@ public sealed class GameState : MonoBehaviour
     public static readonly float LIGHTSPEED = 20.0f;
     public static readonly float LIGHTSPEED_SQUARED = 400.0f;
 
-    private SpaceshipMovement _playerMovement = null;
+    [SerializeField] private SpaceshipMovement _playerMovement = null;
+
     public Vector3 PlayerVelocity
     { get { return _playerMovement.PlayerVelocity; } }
     public Vector3 PlayerPosition
@@ -28,15 +29,9 @@ public sealed class GameState : MonoBehaviour
         {
             if (instance == null)
                 instance = this;
-
             else
                 Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceshipMovement>();
     }
 
     public void UpdatePlayerStatus(Vector3 playerPos, Vector3 playerVel)

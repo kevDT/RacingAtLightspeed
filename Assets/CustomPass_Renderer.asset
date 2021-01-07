@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de31e6771aaff4644a6175cdcc58653f, type: 3}
   m_Name: Outline
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     Event: 450
     blitMaterial: {fileID: 2100000, guid: fdc9f7186b8e4a14eb8164c52272df1c, type: 2}

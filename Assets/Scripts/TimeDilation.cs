@@ -7,6 +7,8 @@ public class TimeDilation : MonoBehaviour
     [SerializeField] private float _lifeTime = 1.0f;
 
     private Movement _objectMovement = null;
+    public float LifeTime
+    { set { _lifeTime = value; } }
 
     private void Awake()
     {
