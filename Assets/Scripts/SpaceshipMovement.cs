@@ -49,7 +49,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_forward)
         {
-            _playerVelocity.z += ACCEL_RATE * Time.deltaTime;
+            _playerVelocity.z += ACCEL_RATE * Time.smoothDeltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -68,7 +68,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_up)
         {
-            _playerVelocity.y += ACCEL_RATE * Time.deltaTime;
+            _playerVelocity.y += ACCEL_RATE * Time.smoothDeltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -87,7 +87,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_down)
         {
-            _playerVelocity.y -= ACCEL_RATE * Time.deltaTime;
+            _playerVelocity.y -= ACCEL_RATE * Time.smoothDeltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -106,7 +106,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_left)
         {
-            _playerVelocity.x -= ACCEL_RATE * Time.deltaTime;
+            _playerVelocity.x -= ACCEL_RATE * Time.smoothDeltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -125,7 +125,7 @@ public class SpaceshipMovement : MonoBehaviour
     {
         while (_right)
         {
-            _playerVelocity.x += ACCEL_RATE * Time.deltaTime;
+            _playerVelocity.x += ACCEL_RATE * Time.smoothDeltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
             yield return null;
         }
@@ -136,11 +136,11 @@ public class SpaceshipMovement : MonoBehaviour
         float vel = _playerVelocity.magnitude;
         Vector3 originalVector = _playerVelocity;
 
-        float progress = ACCEL_RATE * Time.deltaTime;
+        float progress = ACCEL_RATE * Time.smoothDeltaTime;
 
         while (!_playerVelocity.Equals(Vector3.zero) && _reset)
         {
-            progress += ACCEL_RATE * Time.deltaTime;
+            progress += ACCEL_RATE * Time.smoothDeltaTime;
             progress = Mathf.Min(progress, 1);
             _playerVelocity = Vector3.Lerp(originalVector, Vector3.zero, progress);
             yield return null;

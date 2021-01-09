@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 11bbe43642265044abd8e721db8e4519
+guid: 8160b043bf1a6de4faf5b23b1e9d7c25
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,38 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 07 - Default
-    second: {fileID: 2100000, guid: 0281424caa6180c4c8e7063624e94fba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 07 - Defhgfhfgfault
-    second: {fileID: 2100000, guid: 0281424caa6180c4c8e7063624e94fba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Material #27
-    second: {fileID: 2100000, guid: d7a90b12511c26f4cb7b56d252a44808, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #28
-    second: {fileID: 2100000, guid: 0281424caa6180c4c8e7063624e94fba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: black mat for body
-    second: {fileID: 2100000, guid: d7a90b12511c26f4cb7b56d252a44808, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: next mat
-    second: {fileID: 2100000, guid: 0281424caa6180c4c8e7063624e94fba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: next mat glow
-    second: {fileID: 2100000, guid: 0281424caa6180c4c8e7063624e94fba, type: 2}
+    second: {fileID: 2100000, guid: 2d4307f96aeca094a84558ac121bd97e, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

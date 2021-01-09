@@ -6,15 +6,14 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private Vector3 _velocity = Vector3.zero;
 
-    public Vector3 ObjectVelocity
+    public virtual Vector3 ObjectVelocity
     { 
         get { return _velocity; }
-        set { _velocity = value; }  
     }
 
-    private void Update()
+    public virtual void Update()
     {
-        transform.Translate(_velocity * Time.deltaTime);
+        transform.Translate(_velocity * Time.smoothDeltaTime);
         GetComponentInChildren<Renderer>().material.SetVector("_ObjectVelocity", _velocity / GameState.LIGHTSPEED);
     }
 }

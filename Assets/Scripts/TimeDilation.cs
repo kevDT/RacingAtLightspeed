@@ -27,7 +27,7 @@ public class TimeDilation : MonoBehaviour
         Vector3 rightTerm = Vector3.one - Vector3.Scale(objectVelocity, playerVelocity) / GameState.LIGHTSPEED_SQUARED;
         Vector3 relativeVel = new Vector3(leftTerm.x / rightTerm.x, leftTerm.y / rightTerm.y, leftTerm.z / rightTerm.z);
 
-        _lifeTime -= Time.deltaTime * (Mathf.Sqrt(1 - (relativeVel.sqrMagnitude / GameState.LIGHTSPEED_SQUARED)));
+        _lifeTime -= Time.smoothDeltaTime * (Mathf.Sqrt(1 - (relativeVel.sqrMagnitude / GameState.LIGHTSPEED_SQUARED)));
 
         if (_lifeTime <= 0)
             Destroy(gameObject);

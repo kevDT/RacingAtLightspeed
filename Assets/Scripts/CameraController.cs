@@ -12,8 +12,8 @@ public class CameraController : MonoBehaviour
         if (!Mathf.Approximately(mouse.x, 0.0f) || !Mathf.Approximately(mouse.y, 0.0f))
         {
             float sensitivity = 2.5f;
-            float rotationX = sensitivity * mouse.x * Time.deltaTime;
-            float rotationY = sensitivity * mouse.y * Time.deltaTime;
+            float rotationX = sensitivity * mouse.x * Time.smoothDeltaTime;
+            float rotationY = sensitivity * mouse.y * Time.smoothDeltaTime;
 
             Vector3 cameraRotation = Camera.main.transform.rotation.eulerAngles;
 
