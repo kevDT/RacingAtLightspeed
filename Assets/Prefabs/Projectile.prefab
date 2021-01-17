@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5314153869583262974}
   - component: {fileID: 7709484722789569550}
   - component: {fileID: 2686069849570266060}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -0.1, y: 0.13, z: 1.09}
+  m_Size: {x: 0.1, y: 0.13, z: 1.09}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5314153869583262974
 MonoBehaviour:
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4873096774114357766}
   - component: {fileID: 5315240006082082150}
   - component: {fileID: 4008642456868872222}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc06dc47d441a49921569479519688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: 19}
+  _velocity: {x: 0, y: 0, z: -10}
 --- !u!114 &4008642456868872222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42150bd522c03224cb2c58c09865d593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 1000
+  _lifeTime: 3
 --- !u!1 &7432970854278391019
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 7527272664113542256}
   - component: {fileID: 701350722020876324}
   - component: {fileID: 5791564771193190006}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

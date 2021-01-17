@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SpaceshipMovement : MonoBehaviour
 {
@@ -12,8 +13,13 @@ public class SpaceshipMovement : MonoBehaviour
     private float _playabilityfactor = 50.0f;
 
     private bool _reset = false;
+    private bool _resetRotation = false;
 
     bool _forward, _up, _down, _left, _right = false;
+
+    private float _maxRoll = 6.0f;
+    private float _roll = 0.0f;
+    private float _rollSpeed = 3.0f;
 
 
     public Vector3 PlayerVelocity
@@ -100,14 +106,28 @@ public class SpaceshipMovement : MonoBehaviour
 
         if (_left)
             StartCoroutine(MoveLeft());
+        else if (!_resetRotation)
+            StartCoroutine(ResetRotation());
     }
 
     private IEnumerator MoveLeft()
     {
+        _resetRotation = false;
+
         while (_left)
         {
             _playerVelocity.x -= ACCEL_RATE * Time.smoothDeltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
+
+
+            _roll += _rollSpeed * Time.smoothDeltaTime;
+
+            if (_roll < _maxRoll)
+                transform.Rotate(Vector3.forward, _rollSpeed * Time.smoothDeltaTime);
+            else
+                _roll = _maxRoll;
+
+
             yield return null;
         }
     }
@@ -119,14 +139,27 @@ public class SpaceshipMovement : MonoBehaviour
 
         if (_right)
             StartCoroutine(MoveRight());
+        else if (!_resetRotation)
+            StartCoroutine(ResetRotation());
     }
 
     private IEnumerator MoveRight()
     {
+        _resetRotation = false;
+
         while (_right)
         {
             _playerVelocity.x += ACCEL_RATE * Time.smoothDeltaTime;
             _playerVelocity = _playerVelocity.magnitude > MAX_SPEED ? Vector3.Normalize(_playerVelocity) * MAX_SPEED : _playerVelocity;
+
+            _roll -= _rollSpeed * Time.smoothDeltaTime;
+
+
+            if (_roll > -_maxRoll)
+                transform.Rotate(Vector3.forward, -_rollSpeed * Time.smoothDeltaTime);
+            else
+                _roll = -_maxRoll;
+
             yield return null;
         }
     }
@@ -147,5 +180,41 @@ public class SpaceshipMovement : MonoBehaviour
         }
 
         _reset = false;
+    }
+
+    private IEnumerator ResetRotation()
+    {
+        _resetRotation = true;
+        bool reset = false;
+        bool left = _roll > 0.0f;
+
+        float resetSpeed = 4.0f;
+
+        while (!reset && _resetRotation)
+        {
+            float timeStep = resetSpeed * Time.smoothDeltaTime;
+            if (left)
+            {
+                _roll -= timeStep;
+                reset = _roll <= 0.0f;
+                transform.Rotate(Vector3.forward, -timeStep);
+            }
+            else
+            {
+                _roll += timeStep;
+                reset = _roll >= 0.0f;
+                transform.Rotate(Vector3.forward, timeStep);
+            }
+
+            yield return null;
+        }
+
+        _resetRotation = false;
+    }
+
+    //Quick implementation for demo's sake
+    public void OnRestart()
+    {
+        SceneManager.LoadScene(0);
     }
 }

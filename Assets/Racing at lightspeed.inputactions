@@ -68,6 +68,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "10da5b20-f894-4862-b3d1-306025634b43",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "StartGame",
+                    "type": "Button",
+                    "id": "a5f90849-c264-4011-be92-d98c7aa13acf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -156,6 +172,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShootProjectile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eaf263be-9829-4e21-8991-f3f7b16e71f3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64606273-b10c-4b77-ab07-022850145465",
+                    "path": "<Keyboard>/z",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

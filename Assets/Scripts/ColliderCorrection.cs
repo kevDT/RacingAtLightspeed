@@ -7,6 +7,13 @@ public class ColliderCorrection : MonoBehaviour
 {
     private Movement _objectMovement = null;
 
+    private BoxCollider _collider = null;
+
+    private void Awake()
+    {
+        _collider = GetComponent<BoxCollider>();
+    }
+
     private void Start()
     {
         _objectMovement = transform.root.GetComponent<Movement>();
@@ -15,16 +22,14 @@ public class ColliderCorrection : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 newPos = CalculateOffsettedPos();
-        CorrectCollider(newPos);
+        CorrectPhysics(newPos);
     }
 
-    private void CorrectCollider(Vector3 pos)
+    private void CorrectPhysics(Vector3 pos)
     {
-        
-        BoxCollider collider = GetComponent<BoxCollider>();
-        collider.center = Vector3.zero;
-        collider.gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
-        collider.center = pos - transform.position;
+        _collider.center = Vector3.zero;
+        _collider.gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+        _collider.center = pos - transform.position;
     }
 
     private Vector3 CalculateOffsettedPos()
